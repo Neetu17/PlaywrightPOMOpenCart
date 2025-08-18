@@ -1,0 +1,30 @@
+package com.qa.opencart.tests;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.constants.AppConstants;
+
+
+
+public class LoginPageTest extends BaseTest {
+
+	@Test(priority=1)
+	public void loginPageNavigationTest() {
+		loginPage = homepage.navigateToLoginPage();
+		String actLoginPageTitle = loginPage.getLoginPageTitle();
+		System.out.println("page actual title: " +actLoginPageTitle);
+		Assert.assertEquals(actLoginPageTitle, AppConstants.LOGIN_PAGE_TITLE);;
+	}
+	
+	@Test(priority=2)
+	public void forgotPwdLinkExistTest() {
+		Assert.assertTrue(loginPage.isForgotPwdLinkExists());		
+	}
+	
+	@Test(priority=3)
+	public void appLoginTest() {
+		loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim());		
+	}
+	
+}
