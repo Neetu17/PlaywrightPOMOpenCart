@@ -6,19 +6,7 @@ pipeline {
 	    }
 
 	    stages {
-	        stage('Build') {
-	            steps {
-	                git 'https://github.com/Neetu17/PlaywrightPOMOpenCart'
-						sh 'mvn clean install'
-	            }	}
-	        }
-
-	        stage("Deply to QA") {
-	            steps {
-	                echo("deply to QA")
-	            }
-	        }
-
+	      
 	  stage("Regression Automation Test") 
 			{
 	            steps {
